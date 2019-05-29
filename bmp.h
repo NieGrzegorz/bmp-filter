@@ -1,6 +1,10 @@
 #ifndef _BMP_H
 #define _BMP_H
 
+#include <stdint.h>
+
+#pragma pack(push)
+#pragma pack(1)
 typedef struct {
 	uint16_t type;
 	uint32_t size; 
@@ -19,6 +23,8 @@ typedef struct {
 	uint32_t num_colors; 
 	uint32_t important_colors; 	
 } BMPHeader;
+
+#pragma pack(pop)
 
 typedef struct {
 	BMPHeader header;

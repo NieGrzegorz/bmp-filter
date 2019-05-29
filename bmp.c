@@ -3,22 +3,20 @@
 #include "bmp.h"
 
 BMPFile* read_bmp(FILE* fp){
-	BMPFile *bmp_file; 
-	
-	bmp_file = (BMPFile *)malloc(sizeof(BMPFile));	
-	bmp_file->data = (unsigned char *)malloc(sizeof(fp) - sizeof(bmp_file->header)); 
+	BMPFile *bmp_file  = malloc(sizeof(*bmp_file));	
+
+	rewind(fp); 
 	fread(&bmp_file->header, sizeof(bmp_file->header), 1, fp);
-       	
-	while (1){
-		if(fread(&bmp_file->data, sizeof(bmp_file->data), 1, fp) < 1) break; 
-	}	
+	bmp_file->data = malloc(sizeof(*bmp_file->data) * bmp_file->header.image_size_bytes);
+	printf("size: %d", bmp_file->header.image_size_bytes); 	
+	fread(bmp_file->data, bmp_file->header.image_size_bytes, 1, fp);
 	return bmp_file; 
 }
 
 int write_bmp(BMPFile* bmp_file, FILE* fp){
 	rewind(fp); 
 	fwrite(&bmp_file->header, sizeof(bmp_file->header), 1, fp); 
-	fwrite(&bmp_file->data, sizeof(bmp_file->data), 1, fp); 
+	fwrite(bmp_file->data, bmp_file->header.image_size_bytes, 1, fp);	 
 }
 
 void free_bmp(BMPFile* bmp_file){
