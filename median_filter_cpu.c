@@ -48,7 +48,7 @@ void _printPixelVals(unsigned char* image_data, int width, int height)
 int main(int argc, char **argv){
 	FILE *fIn;
 	FILE *fOut; 
-	fIn = fopen("100.bmp", "rb");
+	fIn = fopen("index.bmp", "rb");
 	
 	BMPFile *bmp_file; 
 	bmp_file = read_bmp(fIn);
