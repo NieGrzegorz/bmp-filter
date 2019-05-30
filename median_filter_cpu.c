@@ -5,7 +5,6 @@ void _getMask(unsigned char* mask, unsigned char* image_data, int width,  int x,
 	int mask_index = 0; 
 	for(int i = x - 1; i < x + 2; i++ ){
 		for(int j = y - 1; j < y + 2; j++){
-			printf("Mask for (%d, %d): %02x\n", x, y, image_data[i * width + j]); 
 			mask[mask_index++] = image_data[i * width + j]; 
 		}
 	}
@@ -48,7 +47,7 @@ void _printPixelVals(unsigned char* image_data, int width, int height)
 int main(int argc, char **argv){
 	FILE *fIn;
 	FILE *fOut; 
-	fIn = fopen("index.bmp", "rb");
+	fIn = fopen("indeks.bmp", "rb");
 	
 	BMPFile *bmp_file; 
 	bmp_file = read_bmp(fIn);
