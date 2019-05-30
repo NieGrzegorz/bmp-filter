@@ -91,6 +91,7 @@ int main(int argc, char **argv)
 	dim3 threadsPerBlock(1024, 1024); 
 	prologue(); 
 	_applyFilter<<<1, threadsPerBlock>>>(host_img_in_data, host_img_out_data, bmp_img->header.width_px, bmp_img->header.height_px);	
+	cudaThreadSynchronize();
 	epilogue(); 
 
 	write_bmp(bmp_img, fOut); 
