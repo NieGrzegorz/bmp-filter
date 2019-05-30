@@ -7,8 +7,8 @@ BMPFile* read_bmp(FILE* fp){
 
 	rewind(fp); 
 	fread(&bmp_file->header, sizeof(bmp_file->header), 1, fp);
-	bmp_file->data = malloc(sizeof(*bmp_file->data) * bmp_file->header.image_size_bytes);
-	printf("size: %d", bmp_file->header.image_size_bytes); 	
+	bmp_file->data = (unsigned char*)malloc(bmp_file->header.image_size_bytes);
+	printf("Bits: %d\n", bmp_file->header.bits_per_pixel); 	
 	fread(bmp_file->data, bmp_file->header.image_size_bytes, 1, fp);
 	return bmp_file; 
 }
