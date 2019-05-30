@@ -56,7 +56,7 @@ int main(int argc, char **argv){
 	fclose(fIn);
 
 	fOut = fopen("out.bmp", "wb");
-//	_applyFilter(bmp_file->data, bmp_file->data, bmp_file->header.width_px, bmp_file->header.height_px); 
+	_applyFilter(bmp_file->data, bmp_file->data, bmp_file->header.width_px, bmp_file->header.height_px); 
 //	_printPixelVals(bmp_file->data, bmp_file->header.width_px, bmp_file->header.height_px);
 	write_bmp(bmp_file, fOut); 
 	fclose(fOut); 
