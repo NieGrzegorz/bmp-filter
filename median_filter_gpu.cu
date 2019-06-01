@@ -87,9 +87,9 @@ __global__ void _applyFilter(unsigned char* host_img_in_data, unsigned char* hos
 
 	unsigned char mask[9]; 
 	
-	if((i == 0) || (j == 0) || (i == width - 1) || (j == height - 1))
+	if((i == 0) || (j == 0) || (i >= width - 1) || (j >= height - 1))
 	{
-		host_img_out_data[j * width + i] =  0; 
+	//	host_img_out_data[j * width + i] =  0; 
 	}
 	else 
 	{
